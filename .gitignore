@@ -1,0 +1,56 @@
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Odoo
+*.pot
+*.pyc
+filestore/
+sessions/
+addons/*/static/description/icon.png
+
+# Docker
+.dockerignore
+
+# Environment and secrets
+.env
+*.pem
+*.key
+custom/ssh/id_rsa
+custom/ssh/id_rsa.pub
+custom/ssh/known_hosts
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Build artifacts
+auto/
+!auto/addons/
+!auto/addons/.gitkeep
+
+# OS generated files
+Thumbs.db
+.Spotlight-V100
+.Trashes

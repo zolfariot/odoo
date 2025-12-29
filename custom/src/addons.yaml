@@ -1,0 +1,148 @@
+partner-contact:
+  - partner_contact_access_link
+  - partner_firstname
+  - partner_identification
+queue:
+  - queue_job
+reporting-engine:
+  - report_xlsx
+  - report_xml
+server-auth:
+  - auth_oidc
+  - auth_oidc_environment
+  - auth_session_timeout
+  - user_log_view
+server-brand:
+  - disable_odoo_online
+  - remove_odoo_enterprise
+server-tools:
+  - auditlog
+  - base_name_search_improved
+  - base_view_inheritance_extension
+server-ux:
+  - server_action_mass_edit
+  - date_range
+  - date_range_account
+mail:
+  - mail_debrand
+  - mail_tracking
+web:
+  - web_advanced_search
+  - web_dialog_size
+  - web_favicon
+  - web_listview_range_select
+  - web_m2x_options
+  - web_no_bubble
+  - web_pivot_computed_measure
+  - web_refresher
+  - web_responsive
+  - web_search_with_and
+  - web_tree_many2one_clickable
+knowledge:
+  - document_url
+social:
+  - base_search_mail_content
+  - mail_activity_plan
+account-analytic:
+  - account_analytic_required
+  - account_analytic_distribution_manual
+  - account_analytic_parent
+  - account_analytic_sequence
+  - account_analytic_spread_by_tag
+  - account_analytic_tag
+  - account_move_analytic_link
+  - account_move_update_analytic
+  - hr_expense_analyitic_tag
+  - hr_timesheet_analytic_tag
+account-budgeting:
+  - account_budget_oca
+account-financial-reporting:
+  - partner_statement
+  - account_financial_report
+  - account_tax_balance
+  - mis_builder_cash_flow
+  - mis_template_financial_report
+account-financial-tools:
+  - account_asset_management
+  - account_chart_update
+  - account_journal_lock_date
+  - account_lock_date_update
+  - account_move_line_tax_editable
+  - account_spread_cost_revenue
+  - account_loan
+  - account_usability
+account-invoicing:
+  - account_global_discount
+  - account_invoice_fixed_discount
+account-reconcile:
+  - account_in_payment
+  - account_partner_reconcile
+  - account_reconcile_analytic_tag
+  - base_transaction_id
+  - account_reconcile_oca
+  - account_reconcile_model_oca
+  - account_statement_base
+currency:
+  - currency_rate_update
+mis-builder:
+  - mis_builder
+  - mis_builder_demo
+  - mis_builder_budget
+l10n-france:
+  - account_balance_ebp_csv_export
+  - account_payment_fr_lcr
+  - account_statement_import_fr_cfonb
+  - country_fr
+  - "l10n_fr_*"
+edi:
+  - base_edi
+  - base_facturx
+  - account_invoice_download
+  - account_invoice_download_ovh
+  - account_invoice_download_scaleway
+  - account_invoice_facturx
+  - account_invoice_import
+  - account_invoice_import_facturx
+  - account_invoice_import_simple_pdf
+  - base_business_document_import
+  - base_business_document_import_phone
+  - partner_identification_import
+community-data-files:
+  - account_payment_unece
+  - account_tax_unece
+  - base_bank_from_iban
+  - base_unece
+  - uom_unece
+bank-payment:
+  - account_banking_mandate
+  - account_banking_mandate_contact
+  - account_banking_mandate_sale
+  - account_banking_mandate_sale_contact
+  - account_banking_pain_base
+  - account_banking_sepa_credit_transfer
+  - account_banking_sepa_direct_debit
+  - account_invoice_select_for_payment
+  - account_payment_mode
+  - account_payment_order
+  - account_payment_order_grouped_output
+  - account_payment_order_notification
+  - account_payment_order_return
+  - account_payment_partner
+hr-expense:
+  - hr_expense_invoice
+  - hr_expense_payment
+intrastat-extrastat:
+  - intrastat_base
+  - intrastat_product
+payroll:
+  - payroll
+  - payroll_account
+bank-statement-import:
+  - account_statement_import_online_qonto
+  - account_statement_import_online
+  - account_statement_import_base
+  - account_statement_import_ofx
+  - account_statement_import_file
+  - account_statement_import_move_line
+  - account_statement_import_file_reconcile_oca
+  - account_statement_import_sheet_file

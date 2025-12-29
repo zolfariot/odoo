@@ -19,6 +19,8 @@ server-tools:
   - auditlog
   - base_name_search_improved
   - base_view_inheritance_extension
+server-backend:
+  - base_global_discount
 server-ux:
   - server_action_mass_edit
   - date_range

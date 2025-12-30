@@ -23,6 +23,7 @@ l10n-france:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/682/head # SIRENE lookup
+    - origin refs/pull/687/head # FEC export
 #    - origin refs/pull/629/head # VAT return
 bank-statement-import:
   defaults:

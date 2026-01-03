@@ -25,6 +25,8 @@ server-ux:
   - server_action_mass_edit
   - date_range
   - date_range_account
+server-env:
+  - server_environment
 mail:
   - mail_debrand
   - mail_tracking

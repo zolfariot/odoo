@@ -24,7 +24,8 @@ l10n-france:
     - origin $ODOO_VERSION
     - origin refs/pull/682/head # SIRENE lookup
     - origin refs/pull/687/head # FEC export
-#    - origin refs/pull/629/head # VAT return
+    - origin refs/pull/628/head # l10n_fr_account_oca: VAT return dependency
+    - origin refs/pull/729/head # VAT return
 bank-statement-import:
   defaults:
     depth: 100

@@ -135,6 +135,10 @@ bank-payment:
 hr-expense:
   - hr_expense_invoice
   - hr_expense_payment
+hr-holidays:
+  - hr_holidays_public
+calendar:
+  - calendar_public_holiday
 intrastat-extrastat:
   - intrastat_base
   - intrastat_product

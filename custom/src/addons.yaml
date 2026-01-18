@@ -1,6 +1,7 @@
 partner-contact:
   - partner_contact_access_link
   - partner_firstname
+  - partner_contact_gender
   - partner_identification
 queue:
   - queue_job

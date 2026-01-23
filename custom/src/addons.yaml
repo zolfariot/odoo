@@ -133,6 +133,8 @@ bank-payment:
   - account_payment_order_notification
   - account_payment_order_return
   - account_payment_partner
+hr:
+  - hr_employee_id
 hr-expense:
   - hr_expense_invoice
   - hr_expense_payment

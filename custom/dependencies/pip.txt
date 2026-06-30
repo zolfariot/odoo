@@ -8,3 +8,6 @@ pypdf>=3.1.0
 pymupdf
 schwifty==2024.4.0
 python-jose
+weasyprint
+jinja2
+factur-x

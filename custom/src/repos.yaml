@@ -26,7 +26,8 @@ l10n-france:
     - origin refs/pull/682/head # SIRENE lookup
     - origin refs/pull/707/head # New FEC export
     - origin refs/pull/628/head # l10n_fr_account_oca: VAT return dependency
-    - zolfariot refs/pull/1/head # New French VAT return
+    #- zolfariot refs/pull/1/head # New French VAT return
+    - zolfariot refs/pull/2/head # French VAT reporting
 bank-statement-import:
   defaults:
     depth: 100
@@ -36,3 +37,11 @@ bank-statement-import:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/875/head # Qonto
+l10n-france-zolfa:
+  remotes:
+    origin: git+ssh://git@github.com/zolfariot/l10n-france-zolfa.git
+  merges:
+    - origin main
+  target: origin main
+
+

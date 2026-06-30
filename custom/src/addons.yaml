@@ -7,6 +7,7 @@ queue:
   - queue_job
 reporting-engine:
   - report_xlsx
+  - report_xlsx_helper
   - report_xml
 server-auth:
   - auth_oidc
@@ -43,6 +44,7 @@ web:
   - web_responsive
   - web_search_with_and
   - web_tree_many2one_clickable
+  - web_widget_x2many_2d_matrix
 knowledge:
   - document_url
 social:
@@ -79,6 +81,8 @@ account-financial-tools:
 account-invoicing:
   - account_global_discount
   - account_invoice_fixed_discount
+account-payment:
+  - account_payment_method_base
 account-reconcile:
   - account_in_payment
   - account_partner_reconcile
@@ -140,6 +144,18 @@ hr-expense:
   - hr_expense_payment
 hr-holidays:
   - hr_holidays_public
+hr-timesheet:
+  - hr_timesheet_calendar
+  - hr_timesheet_day_week
+  - hr_timesheet_sheet
+  - ht_timesheet_sheet_autodraft
+  - hr_timesheet_task_domain
+  - hr_timesheet_task_required
+  - hr_timesheet_unusual_days
+  - project_task_analytic_propagation
+project:
+  - project_hr
+  - project_timesheet_time_control
 calendar:
   - calendar_public_holiday
 intrastat-extrastat:
@@ -157,3 +173,12 @@ bank-statement-import:
   - account_statement_import_move_line
   - account_statement_import_file_reconcile_oca
   - account_statement_import_sheet_file
+maintenance:
+  - base_maintenance
+  - base_maintenance_group
+  - maintenance_account
+  - maintenance_product
+l10n-france-zolfa:
+  - l10n_fr_payroll
+purchase-workflow:
+  - purchase_order_general_discount

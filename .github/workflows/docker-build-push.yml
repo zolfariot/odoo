@@ -67,6 +67,34 @@ jobs:
           MAJOR_VERSION=$(echo "${VERSION:-18.0}" | cut -d'.' -f1)
           echo "major_version=${MAJOR_VERSION}" >> $GITHUB_OUTPUT
 
+      - name: Prepare SSH files for private addon repositories
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${{ secrets.ADDONS_SSH_PRIVATE_KEY }}" ]; then
+            echo "ADDONS_SSH_PRIVATE_KEY is not configured; skipping SSH file generation."
+            exit 0
+          fi
+
+          mkdir -p custom/ssh
+
+          # Doodba expects this key name when config uses IdentityFile ~/.ssh/git
+          printf '%s' "${{ secrets.ADDONS_SSH_PRIVATE_KEY }}" > custom/ssh/git
+          chmod 600 custom/ssh/git
+
+          if [ -n "${{ secrets.ADDONS_SSH_PUBLIC_KEY }}" ]; then
+            printf '%s' "${{ secrets.ADDONS_SSH_PUBLIC_KEY }}" > custom/ssh/git.pub
+            chmod 644 custom/ssh/git.pub
+          fi
+
+          if [ -n "${{ secrets.ADDONS_SSH_KNOWN_HOSTS }}" ]; then
+            printf '%s' "${{ secrets.ADDONS_SSH_KNOWN_HOSTS }}" > custom/ssh/known_hosts
+          else
+            ssh-keyscan -H github.com > custom/ssh/known_hosts
+          fi
+          chmod 644 custom/ssh/known_hosts
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
@@ -104,6 +132,12 @@ jobs:
             ODOO_VERSION=${{ steps.odoo-version.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Cleanup temporary SSH files
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          rm -f custom/ssh/git custom/ssh/git.pub custom/ssh/known_hosts
 
       - name: Generate build summary
         if: github.event_name != 'pull_request'

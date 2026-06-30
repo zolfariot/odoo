@@ -35,6 +35,8 @@ addons/*/static/description/icon.png
 custom/ssh/id_rsa
 custom/ssh/id_rsa.pub
 custom/ssh/known_hosts
+custom/ssh/git
+custom/ssh/git.pub
 
 # Logs
 *.log

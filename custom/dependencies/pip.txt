@@ -11,3 +11,5 @@ python-jose
 weasyprint
 jinja2
 factur-x
+pyfrctc>=0.12
+

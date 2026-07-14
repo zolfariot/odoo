@@ -78,6 +78,7 @@ account-financial-tools:
   - account_spread_cost_revenue
   - account_loan
   - account_usability
+  - account_dashboard_banner
 account-invoicing:
   - account_global_discount
   - account_invoice_fixed_discount
@@ -184,3 +185,15 @@ l10n-france-zolfa:
   - account_payment_order_communication_label
 purchase-workflow:
   - purchase_order_general_discount
+fr-einvoicing:
+  - account_invoice_en16931
+  - account_invoice_en16931_py3o
+  - l10n_fr_account_invoice_en16931
+  - l10n_fr_einvoicing
+  - l10n_fr_einvoicing_dashboard_banner
+  - l10n_fr_einvoicing_import
+  - l10n_fr_einvoicing_payment_batch_oca
+  - l10n_fr_einvoicing_purchase
+  - l10n_fr_einvoicing_sale
+sale-workflow:
+  - sale_commercial_partner

@@ -56,6 +56,23 @@ bank-statement-import:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/875/head # Qonto
+community-data-files:
+  defaults:
+    depth: 100
+  remotes:
+    origin: https://github.com/OCA/community-data-files.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    - origin refs/pull/277/head # for e-invoicing: account_tax_unece: add VAT exemption reason codes (VATEX)
+fr-einvoicing:
+  defaults:
+    depth: 10
+  remotes:
+    origin: https://github.com/akretion/fr-einvoicing.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
 l10n-france-zolfa:
   remotes:
     origin: git+ssh://git@github.com/zolfariot/l10n-france-zolfa.git

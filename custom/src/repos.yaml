@@ -28,6 +28,25 @@ l10n-france:
     - origin refs/pull/628/head # l10n_fr_account_oca: VAT return dependency
     #- zolfariot refs/pull/1/head # New French VAT return
     - zolfariot refs/pull/2/head # French VAT reporting
+account-reconcile:
+  defaults:
+    depth: 100
+  remotes:
+    origin: https://github.com/OCA/account-reconcile.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    - origin refs/pull/1015/head # account_reconcile_oca: partial vendor bill payment suggests full residual
+bank-payment:
+  defaults:
+    depth: 100
+  remotes:
+    origin: https://github.com/OCA/bank-payment.git
+    zolfariot: https://github.com/zolfariot/bank-payment.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    - zolfariot refs/pull/1/head # Qonto API Payments
 bank-statement-import:
   defaults:
     depth: 100

@@ -137,6 +137,7 @@ bank-payment:
   - account_payment_order_notification
   - account_payment_order_return
   - account_payment_partner
+  - account_payment_qonto_api
 hr:
   - hr_employee_id
 hr-expense:
@@ -180,5 +181,6 @@ maintenance:
   - maintenance_product
 l10n-france-zolfa:
   - l10n_fr_payroll
+  - account_payment_order_communication_label
 purchase-workflow:
   - purchase_order_general_discount

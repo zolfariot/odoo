@@ -23,8 +23,17 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/odoo
 
 jobs:
-  build-and-push:
+  build-per-arch:
+    name: Build (${{ matrix.platform }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux/amd64
+            platform_id: linux-amd64
+          - platform: linux/arm64
+            platform_id: linux-arm64
     permissions:
       contents: read
       packages: write
@@ -95,6 +104,97 @@ jobs:
           fi
           chmod 644 custom/ssh/known_hosts
 
+      - name: Build image for pull requests (no push)
+        if: github.event_name == 'pull_request'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          push: false
+          build-args: |
+            ODOO_VERSION=${{ steps.odoo-version.outputs.version }}
+          cache-from: type=gha,scope=${{ matrix.platform_id }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.platform_id }}
+
+      - name: Build and push by digest (non-PR)
+        if: github.event_name != 'pull_request'
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          outputs: type=image,name=${{ env.REGISTRY }}/${{ steps.lowercase.outputs.image_name }},push-by-digest=true,name-canonical=true,push=true
+          build-args: |
+            ODOO_VERSION=${{ steps.odoo-version.outputs.version }}
+          cache-from: type=gha,scope=${{ matrix.platform_id }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.platform_id }}
+
+      - name: Export digest
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p /tmp/digests
+          DIGEST="${{ steps.build.outputs.digest }}"
+          touch "/tmp/digests/${DIGEST#sha256:}"
+
+      - name: Upload digest artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: digests-${{ matrix.platform_id }}
+          path: /tmp/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Cleanup temporary SSH files
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          rm -f custom/ssh/git custom/ssh/git.pub custom/ssh/known_hosts
+
+  merge-and-push-manifest:
+    name: Merge and Push Multi-Arch Manifest
+    runs-on: ubuntu-latest
+    needs: build-per-arch
+    if: github.event_name != 'pull_request'
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Download digest artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/digests
+          pattern: digests-*
+          merge-multiple: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lowercase image name
+        id: lowercase
+        run: |
+          echo "image_name=$(echo ${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - name: Determine Odoo version
+        id: odoo-version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.odoo_version }}" >> $GITHUB_OUTPUT
+          else
+            VERSION=$(grep -oP 'ARG ODOO_VERSION=\K[0-9.]+' Dockerfile || echo "18.0")
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          fi
+          MAJOR_VERSION=$(echo "${VERSION:-18.0}" | cut -d'.' -f1)
+          echo "major_version=${MAJOR_VERSION}" >> $GITHUB_OUTPUT
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
@@ -120,27 +220,27 @@ jobs:
             org.opencontainers.image.title=Odoo Docker Image
             org.opencontainers.image.description=Multi-platform Odoo Docker image built with Doodba
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            ODOO_VERSION=${{ steps.odoo-version.outputs.version }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Cleanup temporary SSH files
-        if: ${{ always() }}
+      - name: Create and push multi-arch manifest list
         shell: bash
         run: |
-          rm -f custom/ssh/git custom/ssh/git.pub custom/ssh/known_hosts
+          set -euo pipefail
+
+          IMAGE="${{ env.REGISTRY }}/${{ steps.lowercase.outputs.image_name }}"
+
+          mapfile -t TAGS <<< "${{ steps.meta.outputs.tags }}"
+          tag_args=()
+          for tag in "${TAGS[@]}"; do
+            [ -n "$tag" ] && tag_args+=("-t" "$tag")
+          done
+
+          digest_args=()
+          for digest_file in /tmp/digests/*; do
+            digest_args+=("${IMAGE}@sha256:$(basename "$digest_file")")
+          done
+
+          docker buildx imagetools create "${tag_args[@]}" "${digest_args[@]}"
 
       - name: Generate build summary
-        if: github.event_name != 'pull_request'
         run: |
           echo "## Docker Image Build Summary :rocket:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

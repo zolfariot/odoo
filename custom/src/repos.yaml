@@ -56,6 +56,16 @@ bank-statement-import:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/875/head # Qonto
+purchase-workflow:
+  defaults:
+    depth: 100
+  remotes:
+    origin: https://github.com/OCA/purchase-workflow.git
+    zolfariot: https://github.com/zolfariot/purchase-workflow.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    - zolfariot refs/pull/1/head # purchase_fixed_discount
 community-data-files:
   defaults:
     depth: 100

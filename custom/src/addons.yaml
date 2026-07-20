@@ -185,6 +185,7 @@ l10n-france-zolfa:
   - account_payment_order_communication_label
 purchase-workflow:
   - purchase_order_general_discount
+  - purchase_fixed_discount
 fr-einvoicing:
   - account_invoice_en16931
   - account_invoice_en16931_py3o

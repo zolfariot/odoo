@@ -117,6 +117,8 @@ edi:
   - base_business_document_import
   - base_business_document_import_phone
   - partner_identification_import
+  - account_invoice_import_hosted_invoice
+  - account_invoice_import_hosted_invoice_stripe
 community-data-files:
   - account_payment_unece
   - account_tax_unece

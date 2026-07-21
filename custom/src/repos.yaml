@@ -66,6 +66,15 @@ purchase-workflow:
   merges:
     - origin $ODOO_VERSION
     - zolfariot refs/pull/1/head # purchase_fixed_discount
+edi:
+  defaults:
+    depth: 100
+  remotes:
+    origin: https://github.com/OCA/edi.git
+    zolfariot: https://github.com/zolfariot/edi.git
+  merges:
+    - origin $ODOO_VERSION
+    - zolfariot refs/pull/1/head # stripe invoice import
 community-data-files:
   defaults:
     depth: 100

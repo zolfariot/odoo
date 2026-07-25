@@ -146,6 +146,7 @@ hr:
 hr-expense:
   - hr_expense_invoice
   - hr_expense_payment
+  - hr_expense_sequence
 hr-holidays:
   - hr_holidays_public
 hr-timesheet:

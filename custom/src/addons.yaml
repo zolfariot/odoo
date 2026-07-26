@@ -186,6 +186,9 @@ maintenance:
 l10n-france-zolfa:
   - l10n_fr_payroll
   - account_payment_order_communication_label
+  - account_payment_line_account
+  - account_payment_order_recurring
+  - hr_expense_supplier_detail
 purchase-workflow:
   - purchase_order_general_discount
   - purchase_fixed_discount

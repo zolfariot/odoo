@@ -74,7 +74,7 @@ edi:
     zolfariot: https://github.com/zolfariot/edi.git
   merges:
     - origin $ODOO_VERSION
-    - zolfariot refs/pull/1/head # stripe invoice import
+    - zolfariot refs/pull/4/head # hosted invoice import
 community-data-files:
   defaults:
     depth: 100

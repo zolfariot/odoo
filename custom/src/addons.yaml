@@ -110,6 +110,7 @@ edi:
   - account_invoice_download
   - account_invoice_download_ovh
   - account_invoice_download_scaleway
+  - account_invoice_download_deepinfra
   - account_invoice_facturx
   - account_invoice_import
   - account_invoice_import_facturx
@@ -119,6 +120,7 @@ edi:
   - partner_identification_import
   - account_invoice_import_hosted_invoice
   - account_invoice_import_hosted_invoice_stripe
+  - account_invoice_import_hosted_invoice_withorb
 community-data-files:
   - account_payment_unece
   - account_tax_unece

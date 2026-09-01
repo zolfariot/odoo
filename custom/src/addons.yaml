@@ -191,6 +191,7 @@ l10n-france-zolfa:
   - account_payment_line_account
   - account_payment_order_recurring
   - hr_expense_supplier_detail
+  - account_invoice_import_facturx_product_label
 purchase-workflow:
   - purchase_order_general_discount
   - purchase_fixed_discount

@@ -97,7 +97,7 @@ l10n-france-zolfa:
     origin: git+ssh://git@github.com/zolfariot/l10n-france-zolfa.git
   merges:
     - origin main
-    - origin refs/pull/1/head # x-factur product map helper
+    - origin refs/pull/2/head # x-factur product map helper
   target: origin main
 
 

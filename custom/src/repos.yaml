@@ -89,9 +89,11 @@ fr-einvoicing:
     depth: 10
   remotes:
     origin: https://github.com/akretion/fr-einvoicing.git
+    zolfariot: https://github.com/zolfariot/fr-einvoicing.git
   target: origin $ODOO_VERSION
   merges:
     - origin $ODOO_VERSION
+    - zolfariot refs/pull/1/head # Res company broken dep - #1
 l10n-france-zolfa:
   remotes:
     origin: git+ssh://git@github.com/zolfariot/l10n-france-zolfa.git

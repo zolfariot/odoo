@@ -93,7 +93,8 @@ fr-einvoicing:
   target: origin $ODOO_VERSION
   merges:
     - origin $ODOO_VERSION
-    - zolfariot refs/pull/1/head # Res company broken dep - #1
+    - zolfariot refs/pull/1/head # l10n_fr_ereporting: Res company broken dep - #1
+    - zolfariot refs/pull/2/head # l10n_fr_ereporting: missing limit in query - #2
 l10n-france-zolfa:
   remotes:
     origin: git+ssh://git@github.com/zolfariot/l10n-france-zolfa.git

@@ -86,7 +86,7 @@ community-data-files:
     - origin refs/pull/277/head # for e-invoicing: account_tax_unece: add VAT exemption reason codes (VATEX)
 fr-einvoicing:
   defaults:
-    depth: 10
+    depth: 100
   remotes:
     origin: https://github.com/akretion/fr-einvoicing.git
     zolfariot: https://github.com/zolfariot/fr-einvoicing.git

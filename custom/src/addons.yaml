@@ -204,6 +204,7 @@ fr-einvoicing:
   - account_invoice_en16931_py3o
   - l10n_fr_account_invoice_en16931
   - l10n_fr_einvoicing
+  - l10n_fr_einvoicing_import
   - l10n_fr_einvoicing_dashboard_banner
   - l10n_fr_einvoicing_import
   - l10n_fr_einvoicing_payment_batch_oca

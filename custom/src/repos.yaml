@@ -76,7 +76,7 @@ edi:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/1426/head # needed for akretion/fr_einvoicing
-    - zolfariot refs/pull/4/head # hosted invoice import
+    - zolfariot refs/pull/5/head # hosted invoice import / pr1426 rebase
 community-data-files:
   defaults:
     depth: 100

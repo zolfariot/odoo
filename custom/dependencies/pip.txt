@@ -10,6 +10,6 @@ schwifty==2024.4.0
 python-jose
 weasyprint
 jinja2
-factur-x
+factur-x>=7.7
 pyfrctc>=0.12
 

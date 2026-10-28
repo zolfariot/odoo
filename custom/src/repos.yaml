@@ -72,11 +72,11 @@ edi:
     depth: 100
   remotes:
     origin: https://github.com/OCA/edi.git
-    zolfariot: https://github.com/zolfariot/edi.git
   merges:
-    - origin $ODOO_VERSION
-    - origin refs/pull/1426/head # needed for akretion/fr_einvoicing
-    - zolfariot refs/pull/5/head # hosted invoice import / pr1426 rebase
+    # account_invoice_import rewrite needed for akretion/fr_einvoicing; used as
+    # base instead of merging it onto $ODOO_VERSION (conflicts with upstream
+    # fixes). Back to "origin $ODOO_VERSION" once merged.
+    - origin refs/pull/1426/head
 community-data-files:
   defaults:
     depth: 100
